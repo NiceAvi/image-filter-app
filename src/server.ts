@@ -1,4 +1,4 @@
-import express, {Request, Response} from 'express';
+import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import { filterImageFromURL, deleteLocalFiles } from './util/util';
 const url = require('url');
@@ -29,10 +29,10 @@ const url = require('url');
   //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
 
   /**************************************************************************** */
-  const suportedImage: string[] = ['jpg', 'png', 'bmp', 'tiff', 'gif','jpeg'];
+  const suportedImage: string[] = ['jpg', 'png', 'bmp', 'tiff', 'gif', 'jpeg'];
 
   app.get("/filteredimage/", async (req: Request, res: Response) => {
-    let { image_url } = req.query;
+    let image_url = req.query.image_url;
     if (!image_url) {
       return res.status(400).send("please provide image URL.");
     }
